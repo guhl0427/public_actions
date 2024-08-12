@@ -13,7 +13,10 @@ async function draw() {
     headers,
     method: 'GET',
     credentials: 'include'
-  }).then((res) => res.json());
+  }).then((res) => {
+    console.log('lottery_config/get', res);
+    res.json();
+  });
 
   if (today.err_no !== 0) return Promise.reject('查询免费抽奖，接口调用异常！');
   if (today.data.free_count === 0) return '今日已经免费抽奖！';
